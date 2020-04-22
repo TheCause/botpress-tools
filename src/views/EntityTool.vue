@@ -153,24 +153,26 @@ One entity by line"
           </label>
         </div>
       </form>
-      <div>
-        <h2 style="color: #39b982;">
-          Result :
-        </h2>
-      </div>
-      <div class="result">
-        <pre class="prettyprint">{{ jsonstring }}</pre>
-      </div>
-      <div class="intro">
-        <p>
-          Copy the above content and create the json file below<br />
-          <i
-            >./botpress/data/bots/NAME_OF_YOUR_BOT/entities/{{
-              jsonEntity.id + ".json"
-            }}</i
-          ><br />
-          COPY/PASTE ... Save it and enjoy your bot !!!
-        </p>
+      <div v-if="this.idEntity.length > 0">
+        <div>
+          <h2 style="color: #39b982;">
+            Result :
+          </h2>
+        </div>
+        <div class="result">
+          <pre class="prettyprint lang-js">{{ jsonstring }}</pre>
+        </div>
+        <div class="intro">
+          <p>
+            Copy the above content and create the json file below<br />
+            <i
+              >./botpress/data/bots/NAME_OF_YOUR_BOT/entities/{{
+                jsonEntity.id + ".json"
+              }}</i
+            ><br />
+            COPY/PASTE ... Save it and enjoy your bot !!!
+          </p>
+        </div>
       </div>
 
       <hr />
