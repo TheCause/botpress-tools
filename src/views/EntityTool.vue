@@ -222,16 +222,33 @@ export default {
         this.nameEntity.length > 0 ? this.nameEntity : this.idEntity;
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.jsonEntity.type = this.typeEntity;
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.jsonEntity.occurrences = this.occurrencesEntity;
+
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.jsonEntity.sensitive = Boolean(this.sensitiveEntity === "true");
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.jsonEntity.fuzzy = parseFloat(this.fuzzyEntity);
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.jsonEntity.examples = this.examplesEntity;
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.jsonEntity.pattern = this.patternEntity;
+      if (this.typeEntity == "pattern") {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.examples = this.examplesEntity;
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.pattern = this.patternEntity;
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.occurrences = "";
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.occurrencesEntity = "";
+      } else {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.examples = "";
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.examplesEntity = "";
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.pattern = "";
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.patternEntity = "";
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.jsonEntity.occurrences = this.occurrencesEntity;
+      }
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.jsonEntity.matchcase = Boolean(this.matchcaseEntity === "true");
       return JSON.stringify(this.jsonEntity, null, 4);
